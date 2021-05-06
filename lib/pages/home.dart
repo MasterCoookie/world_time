@@ -15,20 +15,45 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
 
     data = ModalRoute.of(context).settings.arguments;
+    print(data['time']);
     
     return Scaffold(
-      body: SafeArea(child: Column(
-        children: [
-          TextButton(
-            onPressed: () {
-              Navigator.pushNamed(context, '/location');
-            },
-            child: Row(
+      body: SafeArea(child: Padding(
+        padding: const EdgeInsets.fromLTRB(0, 120, 0, 0),
+        child: Column(
+          children: [
+            TextButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/location');
+              },
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Icon(Icons.edit_location),
+                  Text('Edit Location')
+              ])),
+            SizedBox(height: 20),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Icon(Icons.edit_location),
-                Text('Edit Location')
-            ])),
-        ],
+                Text(
+                  data['location'],
+                  style: TextStyle(
+                    fontSize: 28,
+                    letterSpacing: 2
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(height: 20),
+            Text(
+              data['time'],
+              style: TextStyle(
+                fontSize: 66,
+              ),
+            ),
+          ],
+        ),
       )),
     );
   }
