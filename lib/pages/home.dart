@@ -15,46 +15,57 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
 
     data = ModalRoute.of(context).settings.arguments;
-    print(data['time']);
+    print(data);
+
+    // set bcg
+    String bcgImg = data['isDayTime'] ? 'day.png' : 'night.png';
     
     return Scaffold(
-      body: SafeArea(child: Padding(
-        padding: const EdgeInsets.fromLTRB(0, 120, 0, 0),
-        child: Column(
-          children: [
-            TextButton(
-              onPressed: () {
-                Navigator.pushNamed(context, '/location');
-              },
-              child: Row(
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('assets/$bcgImg'),
+            fit: BoxFit.fill,
+          ),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(0, 124, 0, 0),
+          child: Column(
+            children: [
+              TextButton(
+                onPressed: () {
+                  Navigator.pushNamed(context, '/location');
+                },
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    Icon(Icons.edit_location),
+                    Text('Edit Location')
+                ])),
+              SizedBox(height: 20),
+              Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Icon(Icons.edit_location),
-                  Text('Edit Location')
-              ])),
-            SizedBox(height: 20),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Text(
-                  data['location'],
-                  style: TextStyle(
-                    fontSize: 28,
-                    letterSpacing: 2
+                  Text(
+                    data['location'],
+                    style: TextStyle(
+                      fontSize: 28,
+                      letterSpacing: 2
+                    ),
                   ),
-                ),
-              ],
-            ),
-            SizedBox(height: 20),
-            Text(
-              data['time'],
-              style: TextStyle(
-                fontSize: 66,
+                ],
               ),
-            ),
-          ],
+              SizedBox(height: 20),
+              Text(
+                data['time'],
+                style: TextStyle(
+                  fontSize: 66,
+                ),
+              ),
+            ],
+          ),
         ),
-      )),
+      ),
     );
   }
 }

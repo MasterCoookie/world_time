@@ -19,7 +19,8 @@ class _LoadingState extends State<Loading> {
     Navigator.pushReplacementNamed(context, '/home', arguments: {
       'location': instance.location_ui,
       'flag': instance.flag_url,
-      'time': instance.time
+      'time': instance.time,
+      'isDayTime': instance.isDayTime,
     });
   }
 
