@@ -39,8 +39,8 @@ class _HomeState extends State<Home> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    Icon(Icons.edit_location),
-                    Text('Edit Location')
+                    Icon(Icons.edit_location, color: Colors.grey[300],),
+                    Text('Edit Location', style: TextStyle(color: Colors.grey[300]),)
                 ])),
               SizedBox(height: 20),
               Row(
@@ -50,7 +50,8 @@ class _HomeState extends State<Home> {
                     data['location'],
                     style: TextStyle(
                       fontSize: 28,
-                      letterSpacing: 2
+                      letterSpacing: 2,
+                      color: Colors.white,
                     ),
                   ),
                 ],
@@ -60,6 +61,7 @@ class _HomeState extends State<Home> {
                 data['time'],
                 style: TextStyle(
                   fontSize: 66,
+                  color: Colors.white,
                 ),
               ),
             ],
