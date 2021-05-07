@@ -9,7 +9,7 @@ class WorldTime {
   String time; // time in location
   String flag_url; // url to asset flag icon
   String url; // location url ending for API
-  bool isDayTime = false;
+  bool isDayTime = true;
 
   WorldTime({ this.location_ui, this.flag_url, this.url });
 
@@ -42,7 +42,9 @@ class WorldTime {
 
     catch (e) {
       print('Error cought $e');
+      print('Api requested: https://worldtimeapi.org/api/timezone/$url');
       time = "Could not get time data";
+      isDayTime = false;
     }
   }
 }
